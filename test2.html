@@ -130,15 +130,15 @@
         height: "480px",
         width: "640px"
     });
-
-    const chart3 = sdk.createChart({
-        chartId: "6538083a-20dc-4697-8d2c-16eb09c71e54",
+    
+    const chart2 = sdk.createChart({
+        chartId: "653809ec-9ea5-4ba3-86b9-88efd2fbc2e1",
         height: "480px",
         width: "640px"
     });
-
-    const chart2 = sdk.createChart({
-        chartId: "653809ec-9ea5-4ba3-86b9-88efd2fbc2e1",
+    
+    const chart3 = sdk.createChart({
+        chartId: "653937c1-32fa-482c-86d4-bff3dd32015b",
         height: "480px",
         width: "640px"
     });
@@ -166,6 +166,7 @@
         if (selectedDate1 === "" || selectedDate2 === "") {
             chart1.setHighlight({});
             chart2.setHighlight({});
+            chart3.setHighlight({});
         } else {
             // No need to parse the date values as strings are used
             const startDay = selectedDate1;
@@ -176,6 +177,9 @@
                 'days.datetime': { $gte: startDay, $lte: endDay }
             });
             chart2.setHighlight({
+                'days.datetime': { $gte: startDay, $lte: endDay }
+            });
+            chart3.setHighlight({
                 'days.datetime': { $gte: startDay, $lte: endDay }
             });
         }
