@@ -1,44 +1,58 @@
-var axios = require('axios');
-var data = JSON.stringify({
-    "collection": "Weather",
-    "database": "MiniPro",
-    "dataSource": "Cluster0",
-    // "projection": {
-    //     "_id": 1,
-    // },
-    "document": {
-        "latitude" : 20.995,
-        "longitude" : 74.7965,
-        "resolvedAddress" : "Mumbai, MH, India",
-        "address" : "Mumbai,India",
-        "timezone" : "Asia/Kolkata",
-        "tzoffset" : 5.5,
-        "name" : "Mumbai,India",
-        "days" : [{
-            "datetime" : "2023-10-24",
-            "tempmax" : 30.8,
-            "tempmin" : 20.7,
-            "humidity" : 46.4,
-            "conditions" : "Partially cloudy"
-        }]
-    }
+const express = require('express');
+const axios = require('axios');
+const cors = require('cors'); // Import the cors package
+const app = express();
+// const port = 3000;
+
+// Enable CORS for all routes
+app.use(cors());
+
+// Use built-in JSON handling middleware
+app.use(express.json());
+
+
+app.post('/submit-form', (req, res) => {
+    // Process the form data from req.body
+    const { timezone, tzoffset, city, country } = req.body;
+
+    // You can now use this data to construct the payload for your Axios request
+    const axiosData = {
+        collection: "Weather",
+        database: "MiniPro",
+        dataSource: "Cluster0",
+        document: {
+            "timezone" : timezone,
+            "tzoffset" : tzoffset,
+            "name": city + "," + country,
+            "days": []
+        }
+    };
+            
+    const config = {
+        method: 'post',
+        url: 'https://ap-south-1.aws.data.mongodb-api.com/app/data-clape/endpoint/data/v1/action/insertOne',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': '*',
+            'api-key': 'QZcQn6106uI6SjhuQgvYmRSsQS6lSm48rdkLBXbTAGUIg0k7CSFTErab9QjmbwF8',
+        },
+        data: JSON.stringify(axiosData) // Pass the constructed data here
+    };
+
+    // Use Axios to make the request
+    axios(config)
+        .then(function (response) {
+            // Handle the Axios response
+            console.log(JSON.stringify(response.data));
+            res.json({ message: 'Form submitted and data sent to MongoDB' });
+        })
+        .catch(function (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Error occurred while sending data to MongoDB' });
+        });
 });
-            
-var config = {
-    method: 'post',
-    url: 'https://ap-south-1.aws.data.mongodb-api.com/app/data-clape/endpoint/data/v1/action/insertOne',
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Request-Headers': '*',
-      'api-key': 'QZcQn6106uI6SjhuQgvYmRSsQS6lSm48rdkLBXbTAGUIg0k7CSFTErab9QjmbwF8',
-    },
-    data: data
-};
-            
-axios(config)
-    .then(function (response) {
-        console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

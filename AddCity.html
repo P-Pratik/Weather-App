@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Form</title>
+</head>
+<body>
+    <h2>Fill in Data</h2>
+
+    <p id="notanid">
+        This is a Text
+    </p>
+
+    <form id="dataform">
+        <label for="timezone">Timezone:</label>
+        <input type="text" id="timezone" required><br><br>
+
+        <label for="tzoffset">Timezone Offset:</label>
+        <input type="number" id="tzoffset" step="0.1" required><br><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" required><br><br>
+            
+        <label for="country">Country:</label>
+        <input type="text" id="country" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+    <script>
+        document.querySelector('#dataform').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let timezone = document.querySelector('#timezone').value;
+            let tzoffset = parseFloat(document.querySelector('#tzoffset').value);
+            let city = document.querySelector('#city').value;
+            let country = document.querySelector('#country').value;
+
+            // Create a data object with the form fields
+            const data = {
+                timezone,
+                tzoffset,
+                city,
+                country
+            };
+
+            // Make an HTTP POST request to your Node.js server
+            fetch('http://localhost:3000/submit-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(responseData => {
+                // Handle the response from the server
+                console.log(responseData);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        });
+    </script>
+
+</body>
+</html>

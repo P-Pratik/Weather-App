@@ -3,29 +3,18 @@ var data = JSON.stringify({
     "collection": "Weather",
     "database": "MiniPro",
     "dataSource": "Cluster0",
-    // "projection": {
-    //     "_id": 1,
-    // },
     "filter": {
         "name" : "Mumbai,India"
         },
     "update": {
-        "$set": {
-            "days" : [{
-                "datetime" : "2023-10-25",
-                "tempmax" : 30.8,
+        "$addToSet": {
+            "days" :{
+                "datetime" : "2023-10-27",
+                "tempmax" : 30.2,
                 "tempmin" : 20.7,
                 "humidity" : 46.4,
                 "conditions" : "Partially cloudy"
-            },
-            {
-                "datetime" : "2023-10-26",
-                "tempmax" : 30.2,
-                "tempmin" : 20.3,
-                "humidity" : 41.111,
-                "conditions" : "cloudy"
             }
-        ]
             }
 
     },

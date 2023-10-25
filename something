@@ -8,3 +8,11 @@ curl --location --request PUT 'https://ap-south-1.aws.data.mongodb-api.com/app/d
     "dataSource":"Cluster0",
     "projection": {"_id": 1}
 }'
+
+
+
+    url: 'https://ap-south-1.aws.data.mongodb-api.com/app/data-clape/endpoint/data/v1/action/insertOne',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Request-Headers': '*',
+      'api-key': 'QZcQn6106uI6SjhuQgvYmRSsQS6lSm48rdkLBXbTAGUIg0k7CSFTErab9QjmbwF
