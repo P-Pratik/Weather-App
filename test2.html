@@ -53,6 +53,7 @@
                     <option value="2023-11-21">2023-11-21</option>
                     <option value="2023-11-22">2023-11-22</option>
                     <option value="2023-11-23">2023-11-23</option>
+                    <option value="2023-11-24">2023-11-23</option>
                 </select>
                 End Day:
                 <select id="e_day">
@@ -88,6 +89,7 @@
                     <option value="2023-11-21">2023-11-21</option>
                     <option value="2023-11-22">2023-11-22</option>
                     <option value="2023-11-23">2023-11-23</option>
+                    <option value="2023-11-24">2023-11-23</option>
                 </select>
             </div>
             <div class="d-flex flex-column justify-content-center">
@@ -117,68 +119,68 @@
 </body>
 
 <script>
-      const ChartsEmbedSDK = window.ChartsEmbedSDK;
+    const ChartsEmbedSDK = window.ChartsEmbedSDK;
 
-      const sdk = new ChartsEmbedSDK({
+    const sdk = new ChartsEmbedSDK({
         baseUrl: "https://charts.mongodb.com/charts-project-0-jgwha",
-      });
+    });
 
-      const chart1 = sdk.createChart({
-        chartId: "65380703-4c44-46b6-8082-f62e3a1df728", 
+    const chart1 = sdk.createChart({
+        chartId: "65380703-4c44-46b6-8082-f62e3a1df728",
         height: "480px",
         width: "640px"
-          // Additional options go here
-        
-      });
-      
-      const chart3 = sdk.createChart({
-        chartId: "6538083a-20dc-4697-8d2c-16eb09c71e54", 
+    });
+
+    const chart3 = sdk.createChart({
+        chartId: "6538083a-20dc-4697-8d2c-16eb09c71e54",
         height: "480px",
         width: "640px"
-          // Additional options go here
-        
-      });
+    });
 
-      const chart2 = sdk.createChart({
-        chartId: "653809ec-9ea5-4ba3-86b9-88efd2fbc2e1", 
+    const chart2 = sdk.createChart({
+        chartId: "653809ec-9ea5-4ba3-86b9-88efd2fbc2e1",
         height: "480px",
         width: "640px"
-          // Additional options go here
-        
-      });
+    });
 
-      chart1.render(document.getElementById('chart1'));
-      chart2.render(document.getElementById('chart2'));
-      chart3.render(document.getElementById('chart3'));
+    chart1.render(document.getElementById('chart1'));
+    chart2.render(document.getElementById('chart2'));
+    chart3.render(document.getElementById('chart3'));
 
-      const daySelect1=document.getElementById("s_day");
-      const daySelect2=document.getElementById("e_day");
+    const daySelect1 = document.getElementById("s_day");
+    const daySelect2 = document.getElementById("e_day");
 
-        daySelect1.addEventListener("change", async (e) => {
-            updateFilters();
-        });
+    daySelect1.addEventListener("change", async (e) => {
+        updateHighlights();
+    });
 
-        daySelect2.addEventListener("change", async (e) => {
-            updateFilters();
-        });
+    daySelect2.addEventListener("change", async (e) => {
+        updateHighlights();
+    });
 
-        function updateFilters() {
-            const selectedDate1 = daySelect1.value;
-            const selectedDate2 = daySelect2.value;
+    function updateHighlights() 
+    {
+        const selectedDate1 = daySelect1.value;
+        const selectedDate2 = daySelect2.value;
 
-            if (selectedDate1 === "" || selectedDate2 === "") {
-                chart1.setFilter({});
-                chart2.setFilter({});
-            } else {
-                // Parse the date values from daySelect1 and daySelect2
-                const startDay = new Date(selectedDate1);
-                const endDay = new Date(selectedDate2);
+        if (selectedDate1 === "" || selectedDate2 === "") {
+            chart1.setHighlight({});
+            chart2.setHighlight({});
+        } else {
+            // No need to parse the date values as strings are used
+            const startDay = selectedDate1;
+            const endDay = selectedDate2;
 
-                // Use startDay and endDay in the filters
-                chart1.setFilter({ Days: { $gte: startDay, $lt: endDay } });
-                chart2.setFilter({ Days: { $gte: startDay, $lt: endDay } });
-            }
+            // Use startDay and endDay in the highlights
+            chart1.setHighlight({
+                'days.datetime': { $gte: startDay, $lte: endDay }
+            });
+            chart2.setHighlight({
+                'days.datetime': { $gte: startDay, $lte: endDay }
+            });
         }
-    </script>
+    }
+
+</script>
 
 </html>
