@@ -21,3 +21,9 @@
 .chart-container{
     border: rgb(35, 38, 39) solid 2px
 }
+
+.goback{
+    margin: 10px;
+    height: 40px;
+    width: 100px;
+}
