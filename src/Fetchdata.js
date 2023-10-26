@@ -3,18 +3,17 @@ var data = JSON.stringify({
     "collection": "Weather",
     "database": "MiniPro",
     "dataSource": "Cluster0",
-    "filter": {
-        "name" : "Mumbai,India"
-        },
+    // "filter": {
+    //     },
     "projection" : {
-        "name" : 1,
-        "days" : 1
-    }
+        "name" : 1
+    },
+    "limit" : 2
 });
 
 var config = {
     method: 'post',
-    url: 'https://ap-south-1.aws.data.mongodb-api.com/app/data-clape/endpoint/data/v1/action/findOne',
+    url: 'https://ap-south-1.aws.data.mongodb-api.com/app/data-clape/endpoint/data/v1/action/find',
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Request-Headers': '*',

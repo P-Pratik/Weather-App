@@ -3,6 +3,7 @@ const axios = require('axios');
 const cors = require('cors'); // Import the cors package
 const app = express();
 // const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Enable CORS for all routes
 app.use(cors());
@@ -109,13 +110,52 @@ app.post('/add-day-in-city', (req, res) => {
         });
 });
 
-app.get('/forward-data', (req, res) => {
-    const data = { message: 'Hello from the server!' };
-    res.json(data);
+app.get('/forward-city-data', (req, res) => {
+    // const data = { message: 'Hello from the server!' };
+    // res.json(data);
+
+    const axiosData = JSON.stringify({
+        "collection": collection,
+        "database": database,
+        "dataSource": "Cluster0",
+        "filter" : {},
+        "projection" : {
+            "_id" : 0,
+            "name" : 1,
+            "timezone": 1,
+            "tzoffset": 1
+        },
+        // "limit" : 2
+    });
+
+    const config = {
+        method: 'post',
+        url: linkh + '/action/find',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': '*',
+            'api-key': apikey,
+        },
+        data: axiosData
+    };
+
+    axios(config)
+        .then(function (response) {
+            // Handle the Axios response
+            console.log(JSON.stringify(response.data));
+            // res.json({ message: 'Data recieved from Server' });
+            data = response.data
+            res.json(data);
+        })
+        .catch(function (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Error occurred while sending data to MongoDB' });
+        });
+
 });
 
 
-const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
