@@ -17,39 +17,40 @@
         <h1 class="title">Update City</h1>
 
         <form id="dataform">
+                
+                <!-- 
+                    "datetime" : "2023-10-27",
+                    "tempmax" : 30.2,
+                    "tempmin" : 20.7,
+            "humidity" : 46.4,
+            "conditions" : "Partially cloudy" -->
+            <div class="d-flex justify-content-center">
+                <div class="card">
+                    <div class="d-flex flex-row justify-content-between">
+                        <input type="text" class="form-control box" placeholder="Enter City" id="city" required><br><br>
+                        <input type="text" class="form-control box" placeholder="Enter Country" id="country" required><br><br>
+                    </div>
+    
+                    <div class="d-flex flex-row justify-content-between">
+                        <input type="date" class="form-control box" id="date" placeholder="Enter Date" required><br><br>
+                        <input type="text" class="form-control box" placeholder="Enter Weather Condition" id="conditions" required><br><br>
+                    </div>
+    
+                    <div class="d-flex flex-row justify-content-between">
+                        <input type="number" class="form-control box" id="tempmin" placeholder="Enter Min Temperature" step="0.1" required><br><br>
+                        <input type="number" class="form-control box" id="tempmax" placeholder="Enter Max Temp" step="0.1" required><br><br>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <input type="number" class="form-control box" id="humidity" placeholder="Enter Humidity" step="0.1" required><br><br>
+                    </div>
+                </div>
+            </div>
 
-            <label for="city">City:</label>
-            <input type="text" class="form-control" placeholder="Enter City" id="city" required><br><br>
-
-            <label for="country">Country:</label>
-            <input type="text" class="form-control" placeholder="Enter Country" id="country" required><br><br>
-
-            <!-- 
-        "datetime" : "2023-10-27",
-        "tempmax" : 30.2,
-        "tempmin" : 20.7,
-        "humidity" : 46.4,
-        "conditions" : "Partially cloudy" -->
-
-            <label for="date">Date:</label>
-            <input type="date" class="form-control" id="date" placeholder="Enter Date" required>
-
-            <label for="tempmax">Max Temperature:</label>
-            <input type="number" class="form-control" id="tempmax" placeholder="Enter Max Temp" step="0.1" required>
-
-            <label for="tempmin">Min Temperature:</label>
-            <input type="number" class="form-control" id="tempmin" placeholder="Enter Min Temperature" step="0.1" required>
-
-            <label for="humidity">Humidity:</label>
-            <input type="number" class="form-control" id="humidity" placeholder="Enter Humidity" step="0.1" required>
-
-            <label for="conditions">Conditions:</label>
-            <input type="text" class="form-control" placeholder="Enter Weather Condition" id="conditions" required><br><br>
 
             <div class="d-flex flex-row justify-content-center">
                 <input type="submit" class="btn btn-primary" value="Submit">
             </div>
-
+            
         </form>
 
         <script>
