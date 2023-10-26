@@ -109,6 +109,11 @@ app.post('/add-day-in-city', (req, res) => {
         });
 });
 
+app.get('/forward-data', (req, res) => {
+    const data = { message: 'Hello from the server!' };
+    res.json(data);
+});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

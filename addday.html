@@ -18,12 +18,6 @@
 
         <form id="dataform">
                 
-                <!-- 
-                    "datetime" : "2023-10-27",
-                    "tempmax" : 30.2,
-                    "tempmin" : 20.7,
-            "humidity" : 46.4,
-            "conditions" : "Partially cloudy" -->
             <div class="d-flex justify-content-center">
                 <div class="card">
                     <div class="d-flex flex-row justify-content-between">
@@ -57,6 +51,7 @@
             
         </form>
 
+        <div id="response"></div>
         <script>
             document.getElementById('dataform').addEventListener('submit', function(event){
                 event.preventDefault();
@@ -89,7 +84,7 @@
                 .then(response => response.json())
                 .then(responseData => {
                     console.log(responseData);
-                    document.querySelector('#notanid').innerHTML = responseData.message;
+                    document.querySelector('#response').innerHTML = responseData.message;
                 })
                 .catch(err => {
                     console.log(err);
