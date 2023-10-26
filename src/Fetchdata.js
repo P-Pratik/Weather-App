@@ -11,7 +11,7 @@ var data = JSON.stringify({
         "days" : 1
     }
 });
-            
+
 var config = {
     method: 'post',
     url: 'https://ap-south-1.aws.data.mongodb-api.com/app/data-clape/endpoint/data/v1/action/findOne',
