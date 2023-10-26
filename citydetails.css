@@ -1,0 +1,18 @@
+
+.bg-padding{
+    padding: 40px;
+}
+
+.button-edit{
+    height: 40px;
+    width: 80px;
+}
+
+.details-border{
+    border-bottom: rgb(29, 29, 29) solid 2px;
+}
+
+.city{
+    font-size: 24px;
+    font-weight: bold;
+}

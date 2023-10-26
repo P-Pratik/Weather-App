@@ -13,29 +13,23 @@
 </head>
 <body>
     <div class="bg">
-        <h2 class="title">Fill in Data</h2>
-    
+        <h2 class="display-4 title-border">Fill in Data</h2>
+        <br><br>
         <form id="dataform">
-            <div class="d-flex justify-content-center">
-
-                <div class="card">
-                    <div class="d-flex flex-row justify-content-between">
-                        <input type="text" class="form-control box" id="timezone" placeholder="Enter Timezone" required><br><br>
-        
-                        <input type="number"class="form-control box" id="tzoffset" placeholder="Enter Timezone Offset" step="0.1" required><br><br>
-                    </div>
-        
-                    <div class="d-flex flex-row justify-content-between">
-                        <input type="text" class="form-control box" id="city" placeholder="Enter City" required><br><br>
-                        <input type="text" class="form-control box" id="country" placeholder="Enter Country" required><br><br>
-                    </div>
-                </div>
-                
+            
+            <div class="d-flex flex-column justify-content-center">
+                <input type="text" class="form-control box" id="timezone" placeholder="Enter Timezone" required><br><br>
+                <input type="number"class="form-control box" id="tzoffset" placeholder="Enter Timezone Offset" step="0.1" required><br><br>
             </div>
+            
+            <div class="d-flex flex-column justify-content-center">
+                <input type="text" class="form-control box" id="city" placeholder="Enter City" required><br><br>
+                <input type="text" class="form-control box" id="country" placeholder="Enter Country" required><br><br>
+            </div><br>
 
-            <div class="d-flex flex-row justify-content-center">
-                <input type="submit" class="btn btn-primary" value="Submit">
-            </div>
+            <div class="d-flex flex-row justify-content-around">
+                <input type="submit" class="btn btn-outline-dark" value="Submit">
+            </div><br>
 
         </form>
 

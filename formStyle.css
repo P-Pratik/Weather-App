@@ -1,24 +1,29 @@
 .bg{
-    background-color: lightcyan;
-    padding: 20px;
+    padding: 40px;
 }
 
-.title{
-    font-family: "Roboto";
-    font-size: 30px;
-    text-align: center;
-    font-weight: bold;
+.button-padding{
+    padding: 0 0 88px 0;
+}
+
+.title-border{
+    border-bottom: rgb(29, 29, 29) solid 2px;
 }
 
 .box{
+    border: rgb(29, 29, 29) solid 2px;
     width: 40%;
+    height: 60px;
     margin: 20px;
 }
 
 .card{
     width: 70%;
-    background-color:skyblue;
     border-radius: 10px;
-    padding: 10px;
+    border: none;
     margin: 10px;
+}
+
+.img{
+    width: 50%;
 }

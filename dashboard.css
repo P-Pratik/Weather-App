@@ -1,0 +1,18 @@
+
+.bg-padding{
+    padding: 40px;
+}
+
+.button-edit{
+    height: 40px;
+    width: 80px;
+}
+
+.weather-dashboard{
+    border-bottom: rgb(29, 29, 29) solid 2px;
+}
+
+.monitored-cities{
+    font-size: 24px;
+    font-weight: bold;
+}
