@@ -26,6 +26,7 @@ fetch('http://localhost:3000/forward-city-data')
             linkCell.appendChild(link);
 
             const deleteButton = document.createElement("button");
+            deleteButton.setAttribute("class", "delete-button");
             deleteButton.textContent = "Delete";
 
             row.appendChild(idCell);
@@ -50,6 +51,7 @@ fetch('http://localhost:3000/forward-city-data')
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
+                        location.reload();
                         alert("Data Deleted Successfully");
                     })
                     .catch((error) => {
