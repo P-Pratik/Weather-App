@@ -4,86 +4,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="formStyle.css">
     <title>update city</title>
 </head>
 
 <body>
-    <h1>Update City {Cityname}</h1>
+    <div class="bg">
+        <h1 class="title">Update City</h1>
 
+        <form id="dataform">
 
-    <form id="dataform">
+            <label for="city">City:</label>
+            <input type="text" class="form-control" placeholder="Enter City" id="city" required><br><br>
 
-        <label for="city">City:</label>
-        <input type="text" id="city" required><br><br>
+            <label for="country">Country:</label>
+            <input type="text" class="form-control" placeholder="Enter Country" id="country" required><br><br>
 
-        <label for="country">Country:</label>
-        <input type="text" id="country" required><br><br>
+            <!-- 
+        "datetime" : "2023-10-27",
+        "tempmax" : 30.2,
+        "tempmin" : 20.7,
+        "humidity" : 46.4,
+        "conditions" : "Partially cloudy" -->
 
-        <!-- 
-    "datetime" : "2023-10-27",
-    "tempmax" : 30.2,
-    "tempmin" : 20.7,
-    "humidity" : 46.4,
-    "conditions" : "Partially cloudy" -->
+            <label for="date">Date:</label>
+            <input type="date" class="form-control" id="date" placeholder="Enter Date" required>
 
-        <label for="date">Date:</label>
-        <input type="date" id="date" required>
+            <label for="tempmax">Max Temperature:</label>
+            <input type="number" class="form-control" id="tempmax" placeholder="Enter Max Temp" step="0.1" required>
 
-        <label for="tempmax">Max Temperature:</label>
-        <input type="number" id="tempmax" step="0.1" required>
+            <label for="tempmin">Min Temperature:</label>
+            <input type="number" class="form-control" id="tempmin" placeholder="Enter Min Temperature" step="0.1" required>
 
-        <label for="tempmin">Min Temperature:</label>
-        <input type="number" id="tempmin" step="0.1" required>
+            <label for="humidity">Humidity:</label>
+            <input type="number" class="form-control" id="humidity" placeholder="Enter Humidity" step="0.1" required>
 
-        <label for="humidity">Humidity:</label>
-        <input type="number" id="humidity" step="0.1" required>
+            <label for="conditions">Conditions:</label>
+            <input type="text" class="form-control" placeholder="Enter Weather Condition" id="conditions" required><br><br>
 
-        <label for="conditions">Conditions:</label>
-        <input type="text" id="conditions" required><br><br>
+            <div class="d-flex flex-row justify-content-center">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
 
-        <input type="submit" value="Submit">
+        </form>
 
-    </form>
+        <script>
+            document.getElementById('dataform').addEventListener('submit', function(event){
+                event.preventDefault();
 
-    <script>
-        document.getElementById('dataform').addEventListener('submit', function(event){
-            event.preventDefault();
+                let city = document.querySelector('#city').value;
+                let country = document.querySelector('#country').value;
+                let date = document.querySelector('#date').value;
+                let tempmax = parseFloat(document.querySelector('#tempmax').value);
+                let tempmin = parseFloat(document.querySelector('#tempmin').value);
+                let humidity = parseFloat(document.querySelector('#humidity').value);
+                let conditions = document.querySelector('#conditions').value;
 
-            let city = document.querySelector('#city').value;
-            let country = document.querySelector('#country').value;
-            let date = document.querySelector('#date').value;
-            let tempmax = parseFloat(document.querySelector('#tempmax').value);
-            let tempmin = parseFloat(document.querySelector('#tempmin').value);
-            let humidity = parseFloat(document.querySelector('#humidity').value);
-            let conditions = document.querySelector('#conditions').value;
+                const data = {
+                    city,
+                    country,
+                    date,
+                    tempmax,
+                    tempmin,
+                    humidity,
+                    conditions
+                };
 
-            const data = {
-                city,
-                country,
-                date,
-                tempmax,
-                tempmin,
-                humidity,
-                conditions
-            };
-
-            fetch('http://localhost:3000/add-day-in-city', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(responseData => {
-                console.log(responseData);
-                document.querySelector('#notanid').innerHTML = responseData.message;
-            })
-            .catch(err => {
-                console.log(err);
+                fetch('http://localhost:3000/add-day-in-city', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(responseData => {
+                    console.log(responseData);
+                    document.querySelector('#notanid').innerHTML = responseData.message;
+                })
+                .catch(err => {
+                    console.log(err);
+                });
             });
-        });
-    </script>
+        </script>
+    </div>
 
 </body>
 
