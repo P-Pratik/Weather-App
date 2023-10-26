@@ -18,7 +18,9 @@
 }
 
 .delete-button{
+    border-radius: 5px;
+    margin:15px;
     background-color: rgba(255, 0, 0, 0.201);
-    height: 40px;
+    height: 30px;
     width: 60px;
 }
