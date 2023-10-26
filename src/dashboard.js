@@ -16,11 +16,18 @@ fetch('http://localhost:3000/forward-city-data')
             timezoneCell.textContent = item.timezone;
             const tzoffsetCell = document.createElement("td");
             tzoffsetCell.textContent = item.tzoffset;
-            
+
+            const link = document.createElement("a");
+            link.textContent = "View Details";
+            link.href = `citydetails.html?name=${item.name}`;
+            const linkCell = document.createElement("td");
+            linkCell.appendChild(link);
+
             row.appendChild(idCell);
             row.appendChild(nameCell);
             row.appendChild(timezoneCell);
             row.appendChild(tzoffsetCell);
+            row.appendChild(linkCell);
 
             tableBody.appendChild(row);
         });

@@ -5,10 +5,7 @@ const app = express();
 // const port = 3000;
 const PORT = process.env.PORT || 3000;
 
-// Enable CORS for all routes
 app.use(cors());
-
-// Use built-in JSON handling middleware
 app.use(express.json());
 
 
@@ -154,7 +151,52 @@ app.get('/forward-city-data', (req, res) => {
 
 });
 
+app.post('/request-city-data', (req, res) => {
+    const { name } = req.body;
 
+    const axiosData = JSON.stringify({
+        "collection": collection,
+        "database": database,
+        "dataSource": "Cluster0",
+        "filter" : {
+            "name" : name,
+        },
+        "projection" : {
+            "_id" : 0,
+            // "days" : 1,
+            "days.datetime" : 1,
+            "days.tempmax" : 1,
+            "days.tempmin" : 1,
+            "days.humidity" : 1,
+            "days.conditions" : 1 
+        },
+        // "limit" : 2
+    });
+
+    const config = {
+        method: 'post',
+        url: linkh + '/action/findOne',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': '*',
+            'api-key': apikey,
+        },
+        data: axiosData
+    };
+
+    axios(config)
+        .then(function (response) {
+            // Handle the Axios response
+            console.log(JSON.stringify(response.data));
+            // res.json({ message: 'Data recieved from Server' });
+            data = response.data
+            res.json(data);
+        })
+        .catch(function (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Error occurred while sending data to MongoDB' });
+        });
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
