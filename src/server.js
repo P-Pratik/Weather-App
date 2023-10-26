@@ -11,14 +11,20 @@ app.use(cors());
 app.use(express.json());
 
 
+let linkh = "https://ap-south-1.aws.data.mongodb-api.com/app/data-nqxbv/endpoint/data/v1";
+let apikey = 'jTh9rP881NYXCfOmNfgTaHa6s0ZS72MNqnEcY5yYLlRodRQ5u9a7olInimzxzxi0';
+
+let collection = "weather-data";
+let database = "nashik-hourly";
+
 app.post('/add-city', (req, res) => {
     // Process the form data from req.body
     const { timezone, tzoffset, city, country } = req.body;
 
     // You can now use this data to construct the payload for your Axios request
     const axiosData = {
-        collection: "Weather",
-        database: "MiniPro",
+        collection: collection,
+        database: database,
         dataSource: "Cluster0",
         document: {
             "timezone": timezone,
@@ -30,11 +36,11 @@ app.post('/add-city', (req, res) => {
 
     const config = {
         method: 'post',
-        url: 'https://ap-south-1.aws.data.mongodb-api.com/app/data-clape/endpoint/data/v1/action/insertOne',
+        url: linkh + '/action/insertOne',
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Request-Headers': '*',
-            'api-key': 'QZcQn6106uI6SjhuQgvYmRSsQS6lSm48rdkLBXbTAGUIg0k7CSFTErab9QjmbwF8',
+            'api-key': apikey,
         },
         data: JSON.stringify(axiosData) // Pass the constructed data here
     };
@@ -59,8 +65,8 @@ app.post('/add-day-in-city', (req, res) => {
 
     // You can now use this data to construct the payload for your Axios request
     const axiosData = {
-        "collection": "Weather",
-        "database": "MiniPro",
+        "collection": collection,
+        "database": database,
         "dataSource": "Cluster0",
         "filter": {
             "name": city + "," + country
@@ -82,11 +88,11 @@ app.post('/add-day-in-city', (req, res) => {
 
     const config = {
         method: 'post',
-        url: 'https://ap-south-1.aws.data.mongodb-api.com/app/data-clape/endpoint/data/v1/action/updateOne',
+        url: linkh + '/action/updateOne',
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Request-Headers': '*',
-            'api-key': 'QZcQn6106uI6SjhuQgvYmRSsQS6lSm48rdkLBXbTAGUIg0k7CSFTErab9QjmbwF8',
+            'api-key': apikey,
         },
         data: JSON.stringify(axiosData) // Pass the constructed data here
     };
