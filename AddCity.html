@@ -38,6 +38,7 @@
             </div><br>
 
         </form>
+        <div id="response"></div>
 
     </div>
 
@@ -72,6 +73,7 @@
             .then(responseData => {
                 // Handle the response from the server
                 console.log(responseData);
+                document.querySelector('#response').innerHTML = responseData.message;
             })
             .catch(error => {
                 console.error(error);

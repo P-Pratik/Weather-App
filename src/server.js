@@ -198,6 +198,44 @@ app.post('/request-city-data', (req, res) => {
         });
 });
 
+app.post('/delete-city', (req, res) => {
+    const { name } = req.body;
+
+    const axiosData = JSON.stringify({
+        "collection": collection,
+        "database": database,
+        "dataSource": "Cluster0",
+        "filter" : {
+            "name" : name,
+        },
+    });
+
+    const config = {
+        method: 'post',
+        url: linkh + '/action/deleteOne',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': '*',
+            'api-key': apikey,
+        },
+        data: axiosData
+    };
+
+    axios(config)
+        .then(function (response) {
+            // Handle the Axios response
+            console.log(JSON.stringify(response.data));
+            // res.json({ message: 'Data recieved from Server' });
+            data = response.data
+            res.json(data);
+        })
+        .catch(function (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Error occurred while sending data to MongoDB' });
+        });
+        
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
