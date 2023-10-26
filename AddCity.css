@@ -1,0 +1,10 @@
+.bg{
+    background-color: lightcyan;
+    padding: 20px;
+}
+
+.title{
+    font-family: "Roboto";
+    font-size: 24px;
+    text-align: center;
+}
