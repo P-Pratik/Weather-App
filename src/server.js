@@ -58,7 +58,6 @@ app.post('/add-city', (req, res) => {
         });
 });
 
-
 app.post('/add-day-in-city', (req, res) => {
     // Process the form data from req.body
     const { city, country, date, tempmax, tempmin, humidity, conditions } = req.body;
