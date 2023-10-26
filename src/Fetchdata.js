@@ -1,15 +1,22 @@
+let name = "Nashik,India";
+
 var axios = require('axios');
 var data = JSON.stringify({
     "collection": "Weather",
     "database": "MiniPro",
     "dataSource": "Cluster0",
     "filter": {
-        "name" : "Mumbai,India"
-        },
+        "name" : name
+    },
     "projection" : {
-        "name" : 1,
-        "days" : 1
-    }
+        "_id" : 0,
+        // "days" : 1,
+        "days.datetime" : 1,
+        "days.tempmax" : 1,
+        "days.tempmin" : 1,
+        "days.humidity" : 1,
+        "days.conditions" : 1  
+    },
 });
 
 var config = {
