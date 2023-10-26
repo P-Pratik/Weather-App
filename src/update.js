@@ -1,3 +1,5 @@
+// NOT USED IN THE PROJECT
+
 var axios = require('axios');
 var data = JSON.stringify({
     "collection": "Weather",
