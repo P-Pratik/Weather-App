@@ -12,18 +12,34 @@
 
 .box{
     border: rgb(29, 29, 29) solid 2px;
-    width: 40%;
+    width: 60%;
     height: 60px;
     margin: 20px;
 }
 
 .card{
-    width: 70%;
-    border-radius: 10px;
+    width: 700px;
+    border: none; 
+    border-radius: 0;
+    border-right: rgb(143, 143, 143) solid 2px;
+    margin: 10px;
+}
+
+.card-no-border{
+    width: 700px; 
     border: none;
+    border-radius: 0;
     margin: 10px;
 }
 
 .img{
-    width: 50%;
+    width: 85%;
+}
+
+.img-div{
+    width: 50%
+}
+
+.form-div{
+    width: 120%
 }

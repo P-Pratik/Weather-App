@@ -14,17 +14,23 @@
 <body>
     <div class="bg">
         <h2 class="display-4 title-border">Fill in Data</h2>
-        <br><br>
+        <br>
         <form id="dataform">
             
-            <div class="d-flex flex-column justify-content-center">
-                <input type="text" class="form-control box" id="timezone" placeholder="Enter Timezone" required><br><br>
-                <input type="number"class="form-control box" id="tzoffset" placeholder="Enter Timezone Offset" step="0.1" required><br><br>
-            </div>
-            
-            <div class="d-flex flex-column justify-content-center">
-                <input type="text" class="form-control box" id="city" placeholder="Enter City" required><br><br>
-                <input type="text" class="form-control box" id="country" placeholder="Enter Country" required><br><br>
+            <div class="d-flex flex-row justify-content-between">
+                <div class="card">
+                    <div class="form-div">
+                        <input type="text" class="form-control box" id="timezone" placeholder="Enter Timezone" required><br><br>
+                        <input type="number"class="form-control box" id="tzoffset" placeholder="Enter Timezone Offset" step="0.1" required><br><br>
+                        <input type="text" class="form-control box" id="city" placeholder="Enter City" required><br><br>
+                        <input type="text" class="form-control box" id="country" placeholder="Enter Country" required>
+                    </div>
+                </div>
+                <br><br>
+
+                <div class="d-flex flex-column justify-content-center img-div">
+                    <img src="images/forecast.jpg" class="img">
+                </div>
             </div><br>
 
             <div class="d-flex flex-row justify-content-around">
