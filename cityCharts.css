@@ -1,6 +1,7 @@
-.bg{
+.bg-padding{
     padding: 40px;
 }
+
 
 .button-margin{
     margin-bottom: 20px;
@@ -9,6 +10,7 @@
 
 .title-border{
     border-bottom: rgb(29, 29, 29) solid 2px;
+    margin: 10px;
 }
 
 .title-dark{
@@ -18,33 +20,27 @@
 }
 
 .box{
-    border: rgb(29, 29, 29) solid 2px;
-    width: 60%;
-    height: 60px;
     margin: 20px;
 }
 
-.card{
-    width: 700px;
-    border: none; 
+.borders{
+    border: solid;
+    border-top: none;
     border-radius: 0;
-    border-right: rgb(143, 143, 143) solid 2px;
+}
+
+.chart-heading{
+    font-size: 20px;
+    width: 644px;
+    font-weight: bold;
+    text-align: center;
     margin: 10px;
+    margin-bottom: 0;
+    color: white;
 }
 
-
-.img1{
-    width: 85%;
-}
-
-.img2{
-    height: 75%;
-    padding: 10px;
-    margin: 10px;
-}
-
-.img-div{
-    width: 50%;
+.chart-div{
+    margin: 20px;
 }
 
 
