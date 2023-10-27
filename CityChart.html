@@ -21,16 +21,19 @@
         <div class="borders">
             
             <div class="d-flex flex-row justify-content-center">
-                <select class="form-control-sm box" id="name" onchange="updateCharts()">
-                    <option selected="Nashik,India">Nashik,India</option>
-                    <option value="Mumbai,India">Mumbai,India</option>
-                </select>
+                <div>
+                    <label for="name">Select City:</label>
+                    <select class="form-control-sm box" id="name" onchange="updateCharts()">
+                        <option selected="Nashik,India">Nashik,India</option>
+                        <option value="Mumbai,India">Mumbai,India</option>
+                    </select>
+                </div>
             </div><br><br>
             
-            <div class="d-flex flex-row justify-content-around">
+            <div class="d-flex flex-row justify-content-center">
                 <div>
-                    Start Date:
-                    <select id="s_day">
+                    <label for="s_day">Start Date:</label>
+                    <select class="form-control-sm box" id="s_day">
                         <option value="">All</option>
                         <option value="2023-10-24">2023-10-24</option>
                         <option value="2023-10-25">2023-10-25</option>
@@ -68,8 +71,8 @@
                 </div>
 
                 <div>
-                    End Date:
-                    <select id="e_day">
+                    <label for="s_day">End Date:</label>
+                    <select class="form-control-sm box" id="e_day">
                         <option value="">All</option>
                         <option value="2023-10-24">2023-10-24</option>
                         <option value="2023-10-25">2023-10-25</option>

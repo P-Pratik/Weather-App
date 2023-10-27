@@ -10,16 +10,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="formStyle.css">
+    <link rel="stylesheet" href="home.css">
     <title>Citywise Weather Database</title>
 </head>
 
 <body>
-    <div class="bg">
-        <h1 class="heading">Weather Data</h1>
-        <div class="d-flex flex-row justify-content-center">
+    <div class="bg-padding">
+        <h1 class="bg-dark title-dark">Weather Data</h1>
+        <div class="borders d-flex flex-row justify-content-center">
             <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="form-control box" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   --Select City--
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -27,10 +27,14 @@
                   <a class="dropdown-item" href="CityChartMumbai.html">Mumbai</a>
                 </div>
                 <br><br>
-                <div>
-                  <p>Admin Page</p>
-                  <button><a href="AddCity.html">Insert City</a></button>
-                  <button><a href="addday.html">Insert Day data</a></button>
+                <p class="admin-heading lead bg-dark">Admin Page</p>
+                <div class="admin-div d-flex flex-column justify-content-center">
+                  <div class="d-flex justify-content-center">
+                    <div class="d-flex flex-column justify-content-around">
+                      <button class="button-margin btn btn-outline-primary"><a href="AddCity.html">Insert City</a></button>
+                      <button class="button-margin btn btn-outline-primary"><a href="addday.html">Insert Day data</a></button>
+                    </div>
+                  </div>
                 </div>
               </div>
         </div>
