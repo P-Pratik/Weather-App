@@ -1,14 +1,62 @@
-// USELESS FILE 
+let weather = {
+  apiKey: "21509c30b0bb79c57a5550f253626a7e",
+  fetchWeather: function (city) {
+    fetch(
+      "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + this.apiKey
+    )
+      .then((response) => {
+        if (!response.ok) {
+          alert("No weather found.");
+          throw new Error("No weather found.");
+        }
+        return response.json();
+      })
+      .then((data) => this.displayWeather(data));
+  },
+  
+  displayWeather: function (data) {
+    const { name, dt } = data;
+    const { icon, description } = data.weather[0];
+    const { temp, humidity, pressure } = data.main;
+    const { speed } = data.wind;
+    var datetime = new Date(dt * 1000);
 
-import ChartsEmbedSDK from '@mongodb-js/charts-embed-dom';
+    document.querySelector(".date-time").innerText = datetime.toUTCString();
+    document.querySelector(".city").innerText = name;
 
+    document.querySelector(".icon").src =
+      "https://openweathermap.org/img/wn/" + icon + ".png";
 
-const sdk = new ChartsEmbedSDK({
-  baseUrl: 'https://charts.mongodb.com/charts-project-0-ymhhz'
+    document.querySelector(".description").innerText = description;
+    document.querySelector(".temperature").innerText = temp + "°C";
+    document.querySelector(".humidity").innerText =
+      "Humidity: " + humidity + "%";
+    document.querySelector(".wind").innerText =
+      "Wind speed: " + speed + " km/h";
+    document.querySelector(".pressure").innerText = "Pressure: " + pressure + " hPa";
+
+    // document.querySelector(".weather").classList.remove("loading");
+    // document.body.style.backgroundImage =
+    //   "url('https://source.unsplash.com/1600x900/?" + name + "')";
+  },
+
+  search: function () {
+    let city = document.querySelector(".search-input").value;
+    this.fetchWeather(city);
+  },
+
+};
+
+document.querySelector(".search-button").addEventListener("click", function () {
+  weather.search();
 });
 
-const chart1 = sdk.createChart({
-  chartId: '65380024-9ea5-43a5-8717-88efd2ebfea4'
-});
+document
+  .querySelector(".search-input")
+  .addEventListener("keyup", function (event) {
+    if (event.key == "Enter") {
+      weather.search();
+    }
+  });
 
-chart1.render(document.getElementById('chart1'));
+weather.fetchWeather("Pune");

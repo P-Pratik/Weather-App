@@ -58,15 +58,35 @@ main{
     display: flex;
     flex-direction: row;
     gap: 40px;
-    align-items: center;
+    align-items: stretch;
+    justify-content: space-around;
     border: rgb(29, 29, 29) solid 2px;
     border-radius: 5px;
     padding: 10px;
+}
+
+.weather-components{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.weather-main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.weather-main p{
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .weather-map{
     height: 300px;
     width: 300px;
     border-radius: 5px;
-    margin-right: 40px;
 }

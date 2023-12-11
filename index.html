@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
+    <script src="src/index.js" defer></script>
 </head>
 
 <body>
@@ -17,18 +18,35 @@
     </header>
     <main>
         <section id="weather-search" class="weather-search">
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Enter city name">
-                <button type="submit">Search</button>
-            </form>
+                <input type="text" id="search-input" class="search-input" placeholder="Enter city name">
+                <button type="submit" id="search-button" class="search-button">Search</button>
         </section>
 
         <section id="weather-display" class="weather-display">
+
             <div id="weather-components" class="weather-components">
-                <p id="date-time">Dec 11, 09:59am</p>
-                <p id="city-name">Nashik,In</p>
-                <p id="temperature">10*C</p>
-                <p id="weather-condition">Cloudy</p>
+
+                <div id="weather-title" class="weather-title">
+                    <p id="date-time" class="date-time">Dec 11, 09:59am</p>
+                    <p id="city-name" class="city">Nashik,In</p>
+                </div>
+
+                <div id="weather-main" class="weather-main">
+                    <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon" id="weatherIcon" />
+                    <p id="weather-description" class="description">Cloudy</p>
+                    <p id="temperature" class="temperature">10*C</p>
+                </div>
+
+                <div id="weather-other" class="weather-other">
+                    <p id="humidity" class="humidity">Humidity: 10%</p>
+                    <p id="wind" class="wind">Wind: 10km/h</p>
+                    <p id="pressure" class="pressure">Pressure: 10hPa</p>
+                </div>
+
+                <button id="weather-add-monitor" class="weather-add-monitor">
+                    Add to monitor
+                </button>
+
             </div>
 
             <div id="weather-map" class="weather-map">
