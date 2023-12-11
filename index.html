@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <header>
+        <h1>WayMon</h1>
+        <p>Personized Weather Application</p>
+    </header>
+    <main>
+        <section id="weather-search" class="weather-search">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Enter city name">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <section id="weather-display" class="weather-display">
+            <div id="weather-components" class="weather-components">
+                <p id="date-time">Dec 11, 09:59am</p>
+                <p id="city-name">Nashik,In</p>
+                <p id="temperature">10*C</p>
+                <p id="weather-condition">Cloudy</p>
+            </div>
+
+            <div id="weather-map" class="weather-map">
+                MAP
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <p>Weather data provided by some API</p>
+    </footer>
+</body>
+
+</html>

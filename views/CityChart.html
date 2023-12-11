@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="D:\dsd_minipro\Weather-App\src\styles.css">
-    <link rel="stylesheet" href="cityCharts.css">
+    <link rel="stylesheet" href="src/cityCharts.css">
     <title>Citywise Weather Database</title>
 </head>
 
@@ -24,7 +24,8 @@
                 <div>
                     <label for="name">Select City:</label>
                     <select class="form-control-sm box" id="name" onchange="updateCharts()">
-                        <option selected="Nashik,India">Nashik,India</option>
+                        <option selected="Select City"></option>
+                        <option value="Nashik,India">Nashik,India</option>
                         <option value="Mumbai,India">Mumbai,India</option>
                     </select>
                 </div>
@@ -183,7 +184,7 @@
     chart1.render(document.getElementById('chart1'));
     chart2.render(document.getElementById('chart2'));
     chart3.render(document.getElementById('chart3'));
-
+    updateCharts();
     const daySelect1 = document.getElementById("s_day");
     const daySelect2 = document.getElementById("e_day");
     
